@@ -14,7 +14,7 @@ RUN mkdir -p $NVM_DIR && \
     . $NVM_DIR/nvm.sh && \
     nvm install $NODE_VERSION && \
     nvm alias default $NODE_VERSIOn && \
-    nvm use default &&
+    nvm use default && \
     curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
 
 ENV PATH=$HOME/.yarn/bin:$PATH
