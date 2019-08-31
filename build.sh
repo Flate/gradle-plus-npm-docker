@@ -2,6 +2,6 @@
 
 curl https://get.sdkman.io > get-sdkman.sh
 
-docker build -t flate/gradle-plus-npm:dev .
+docker build -t flate/gradle-plus-npm:latest .
 
 exit 0
