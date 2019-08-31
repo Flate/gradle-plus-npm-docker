@@ -1,24 +1,33 @@
-FROM gradle:5.5-jdk11
+FROM ubuntu:latest
 
 # See https://stackoverflow.com/a/28390848
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
+RUN apt-get update && apt-get install curl zip unzip ca-certificates gnupg --no-install-recommends -y && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install yarn --no-install-recommends -y 
+
 ENV NODE_VERSION=v12.9.1
 ENV NVM_VERSION=0.34.0
+ENV ANGULAR_VERSION=8.3.2
+ENV JAVA_VERSION=11.0.4-amzn
+ENV GRADLE_VERSION=5.6.1
 
-ENV NVM_DIR=/usr/local/nvm
+ENV PATH=/root/.nvm/versions/node/$NODE_VERSION/bin:/root/.sdkman/candidates/java/current/bin:/root/.sdkman/candidates/gradle/current/bin:$PATH
 
-RUN mkdir -p $NVM_DIR && \
-    curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash && \
-    . $NVM_DIR/nvm.sh && \
-    nvm install $NODE_VERSION && \
-    nvm alias default $NODE_VERSIOn && \
-    nvm use default &&
-    curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
+WORKDIR /root/
 
-ENV PATH=$HOME/.yarn/bin:$PATH
-ENV NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+ADD get-sdkman.sh /root/get-sdkman.sh
 
-RUN npm install -g @angular/cli
+RUN bash /root/get-sdkman.sh
+
+RUN source "/root/.sdkman/bin/sdkman-init.sh" && \
+    yes | sdk install java $JAVA_VERSION && \
+    yes | sdk install gradle $GRADLE_VERSION
+
+# This also installs NODE_VERSION
+RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash 
+
+RUN yarn global add @angular/cli@$ANGULAR_VERSION

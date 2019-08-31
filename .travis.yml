@@ -1,0 +1,17 @@
+language: generic
+
+env:
+  matrix:
+    
+
+services:
+  - docker
+
+script:
+  - sh -c ./build.sh
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
