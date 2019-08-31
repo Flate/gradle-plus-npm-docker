@@ -1,0 +1,7 @@
+language: generic
+
+services:
+  - docker
+
+script:
+  - sh -c ./build.sh
