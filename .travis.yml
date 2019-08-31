@@ -1,15 +1,12 @@
 language: generic
-
 env:
   matrix:
-    
-
+  - secure: f2FJtAbml3G8cFbvSfJdNf0kixH2ki+eHb/356KQLOVeQ0vo0ITC0kU4TGpbnRqSDoqPRVyKU4y4KSpn0Vt/bkJHZykpjzwdK9jqWJ6Sn3+jCf1JMxKCLIkqgYM4L2LW4d4KRwxe3g/yN7qzZO9lfvEyf0qOgYWNPnAgv4e/zcUpXabqRiOPI206YePH3XKZFzkQLXf+9UAEFrhp0917yCklRwwQpYBcLY34/4+FC1xkEcLxOb08vHO7AhRQzDkOrFO/9JMCb0WanG3iLYpNOpupOU9I7qYlPvG9WOes1mjzqnsY6BkjFrCjP2TA7f4Y2mH+TXPt3+QgniOEruT2NO/U6LjHbDN+1EytcKnSnxPVQBOlx+uGQI0DiyC/n6YzNITSzsgQF0A5Sk19n3QSI8j5MGZjosrS8bY1y2IyLY+NlbpkgSlOgDzODNrfReTFLCNVqcvtCUhqBttPngIp8lk0NHNL0tmQ6vzbQPvcdCeGpvPUAO0I0F58Tq5Jiw47H1+ificxZMcRUZ0gc5lnn2+TTIAysLFKpIocm86WoRv0U9FX05uLOKkYdTRlGHMN/9DXkLfC8M90D/+Nl6LpjUrcJrjJp8qKa8g1ad3pzxBKpNw6OlSaznOaRqS+12mtSisLDfeQ1AA7XBjVB+pHi7muVx2nKZClNVxz7O4jhLw=
+  - secure: SlX7t+qiqCT6Y6w+/jkwul9jJwd2+odyCMni04HFGQBWZlOMGtE8BKHqSwuGMMaBPVCKhd5JzY7MmSOyQz5hBFzA1abAXRY5ftrl0r0prNEvIpBNbIS8bkqh0IxBPhE8fpv2/mLfzke+qrGU5ispVm+pWZp2+8M2ucUUcYD/eiB/yswZBdO5VXH0plfLBxp12QIKJ5zfUVd+lPxZtXX+9Z/960ay/QCWjgFANyaC2GYDgwnNty+H9ljhtgdeRxO7ryTxLBN8GwE6LO9R7AiyaegJS9vghzDJwslPAnyQraWj93cyyeWWAXho+YFIXRue0GXA7xeTEQWFyh+KSCU7Lh5qjEslwYPb7XhLYoWQL+qv36fiWud2He18z+PIhfB//lVNfXy2AKQtsrR3c2PKrtFd8jCN0aPKFqNvhfOAO8JaPWW3R8M0blBddWXPl9ChDIOi8JCDzcx202Yb2aYd1EEhLjE8X0gDa3TXlrWtpUeIbwjmECykLLtXrrdcLdeopFdFQzX7KEaXQIduP+vRAOS76wvocZXbEVZ4ZBtnBZCyoXIzd0eaWga3XRouNS0wckBR2KmgcH+nqeMaH/yhmxZux7hquoyXs27qUuqOxDKYvMIEM4sKdh67Yrhh8QAJIpJOhQVfDCWNPl0cStb6tH4//JlkcUOvAn53cdrvH+s=
 services:
-  - docker
-
+- docker
 script:
-  - sh -c ./build.sh
-
+- sh -c ./build.sh
 deploy:
   provider: script
   script: bash docker_push
