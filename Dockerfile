@@ -4,7 +4,7 @@ FROM gradle:5.5-jdk11
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-ENV NODE_VERSION=12.6.0
+ENV NODE_VERSION=v12.9.1
 ENV NVM_VERSION=0.34.0
 
 ENV NVM_DIR=/usr/local/nvm
