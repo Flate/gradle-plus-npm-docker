@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install curl zip unzip ca-certificates gnupg --no-
 ENV NODE_VERSION=v12.9.1
 ENV NVM_VERSION=0.34.0
 ENV ANGULAR_VERSION=8.3.2
-ENV JAVA_VERSION=11.0.4-amzn
+ENV JAVA_VERSION=12.0.2-librca
 ENV GRADLE_VERSION=5.6.1
 
 ENV PATH=/root/.nvm/versions/node/$NODE_VERSION/bin:/root/.sdkman/candidates/java/current/bin:/root/.sdkman/candidates/gradle/current/bin:$PATH
